@@ -1,0 +1,33 @@
+@layout('master')
+@yield('content')
+<!-- Main Section -->
+<section class="main-section">
+    <!-- Add Your Content Inside -->
+    <div class="content">
+        <!-- Remove This Before You Start -->
+        <div class="row">
+            <div class="col-md-6">
+            <h2>Actualizar producto {{producto.nombre}}</h2>
+                <form action="{{ route('Producto.update', { id : producto.id} ) }}" method="post">
+                    {{ csrfField() }}
+                    <div class="form-group">
+                        <label for="title">Nombre</label>
+                        <input class="form-control" type="text" name="nombre" placeholder="Nombre producto"
+                        value="{{ producto.nombre }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descripción</label>
+                        <textarea class="form-control" name="descripcion" cols="30" rows="10">{{ producto.descripcion }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-success">Actualizar</button>
+                    </div>
+                </form>
+                <a href="{{ route('Producto.index') }}">Regresar</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.content -->
+</section>
+<!-- /.main-section -->
+@endyield
